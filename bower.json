@@ -1,0 +1,21 @@
+{
+  "name": "nato_play",
+  "authors": [
+    "NAT <nat@magicnat.com>"
+  ],
+  "description": "A remote controlable tone generator.",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://nat.moe/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tone": "*"
+  }
+}
