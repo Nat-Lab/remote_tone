@@ -29,7 +29,7 @@ id|int|必須|任務 ID。
 
 名稱|類型|必須？|值
 :--|:--|:--|:--
-action|字符串|必須|`add` 或者 `remove`
+action|字符串|必須|`add`，`remove` 或者 `none`。
 task|task 對象|可選|要添加的 `task`。
 id|int|可選|`remove` 時，用於指定要移除的 `task`。
 offset|int|必須|下一個 Json 對象的 `offest`。
@@ -37,6 +37,8 @@ offset|int|必須|下一個 Json 對象的 `offest`。
 客戶端收到 `add` 操作時，應該使用：`var id = toneControl.create(freq, level, interval, duration)` 來新建任務。任務建立後，POST 一個 `task_element` 數組到 `http[s]://server_url/client.cgi?id=<id>&action=report`，內容為所有進行中的 task。 
 
 客戶端收到 `remove` 操作時，應該使用：`toneControl.destroy(id)` 來銷毀任務。任務銷毀後，POST 一個 `task_element` 數組到 `http[s]://server_url/client.cgi?id=<id>&action=report`，內容為所有進行中的 task。 
+
+客戶端收 `none` 操作時，無須響應。
 
 #### 控制端：
 
