@@ -30,8 +30,8 @@ id|int|必須|任務 ID。
 名稱|類型|必須？|值
 :--|:--|:--|:--
 action|字符串|必須|`add` 或者 `remove`
-task|task 對象|可選|要添加的 task。
-id|int|可選|`remove` 時，用於指定要移除的 task。
+task|task 對象|可選|要添加的 `task`。
+id|int|可選|`remove` 時，用於指定要移除的 `task`。
 offset|int|必須|下一個 Json 對象的 `offest`。
 
 客戶端收到 `add` 操作時，應該使用：`var id = toneControl.create(freq, level, interval, duration)` 來新建任務。任務建立後，POST 一個 `task_element` 數組到 `http[s]://server_url/client.cgi?id=<id>&action=report`，內容為所有進行中的 task。 
@@ -45,7 +45,7 @@ POST 下面的 Json 到 `http[s]://server_url/server.cgi?id=<id>&action=control`
 名稱|類型|必須？|值
 :--|:--|:--|:--
 action|字符串|必須|`add` 或者 `remove`
-task|task 對象|可選|要添加的 task。
-id|int|可選|`remove` 時，用於指定要移除的 task。
+task|task 對象|可選|要添加的 `task`。
+id|int|可選|`remove` 時，用於指定要移除的 `task`。
 
-從 `http[s]://server_url/server.cgi?id=[id]&action=get_report` 獲取客戶端任務列表。返回的是一個數組，內有 tasks 對象。
+從 `http[s]://server_url/server.cgi?id=[id]&action=get_report` 獲取客戶端任務列表。返回的是一個數組，內有 `task_element` 對象。
