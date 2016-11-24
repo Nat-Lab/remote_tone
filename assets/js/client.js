@@ -1,7 +1,7 @@
 var tasks = [];
 var offset = 0;
 var polling_intv = 500;
-var url, ctrl_id;
+var server, ctrl_id;
 
 var natoPlay = (function () {
 
@@ -35,6 +35,7 @@ var natoPlay = (function () {
         task_object.duration
       );
       tasks.push({id: id, task: task_object});
+      UI.update(tasks);
       rpc.report();
     },
 
@@ -46,15 +47,14 @@ var natoPlay = (function () {
       }); 
       tasks = new_tasks;
       rpc.report();
+      UI.update(tasks);
     }
   };
 
   start = function (url, id) {
-    window.setInterval(function() {
-      var jsonObj = rpc.get();
-      rpc.handler(jsonObj);
-      UI.update(jsonObj);
-    }, polling_intv);
+    server = url;
+    ctrl_id = id;
+    window.setInterval(rpc.handler(rpc.get()), polling_intv);
   };
 
   return {
