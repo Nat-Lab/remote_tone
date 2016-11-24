@@ -3,16 +3,24 @@
 <html>
 <head>
 <script src="bower_components/tone/build/Tone.js"></script>
+<script src="assets/js/control.js"></script>
 </head>
 <body>
 freq: <input type=text id=freq></input><br>
 level: <input type=text id=level></input><br>
 interval: <input type=text id=interval></input><br>
 duration: <input type=text id=duration></input><br>
+<button onclick='doit();'>Add</button>
 <script>
-var freq = document.getElementById('freq'),
-    lvl  = document.getElementById('level'),
-    intv = document.getElementById('interval'),
-    dur  = document.getElementById('duration');
+function doit() {
+	var freq = parseInt(document.getElementById('freq').value),
+	    lvl  = parseInt(document.getElementById('level').value),
+	    intv = parseInt(document.getElementById('interval').value),
+	    dur  = parseInt(document.getElementById('duration').value);
+
+	//if(!typeof task === 'undefined') toneControl.destroy(task);
+	//task = 
+	toneControl.create(freq, lvl, intv, dur);
+}
 </script>
 </html>
