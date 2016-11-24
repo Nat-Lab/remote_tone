@@ -1,6 +1,7 @@
 var tasks = [];
 var offset = 0;
 var polling_intv = 500;
+var url, ctrl_id;
 
 var natoPlay = (function () {
 
@@ -27,7 +28,7 @@ var natoPlay = (function () {
 	},
 
 	task = {
-		add : function(task) {
+		add : function(task_object) {
 			var id = toneControl.create(
 				task_object.freq, 
 				task_object.level, 
@@ -48,7 +49,7 @@ var natoPlay = (function () {
 		}
 	};
 
-	start = function (url) {
+	start = function (url, id) {
 		
 	};
 
