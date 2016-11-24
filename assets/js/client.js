@@ -43,8 +43,9 @@ var natoPlay = (function () {
 			var new_tasks = [];
 			toneControl.destroy(id);
 			tasks.forEach(function(_task) {
-				if(task.id != id) new_task.push(_task);
-			}); // Problem: will natoPlay.report() being execute before forEach() done?
+				if(task.id != id) new_tasks.push(_task);
+			}); 
+			tasks = new_tasks;
 			rpc.report();
 		}
 	};
