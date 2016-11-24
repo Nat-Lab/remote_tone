@@ -3,7 +3,7 @@
   "authors": [
     "NAT <nat@magicnat.com>"
   ],
-  "description": "A remote controlable tone generator.",
+  "description": "A remote controlled tone generator.",
   "main": "index.html",
   "license": "MIT",
   "homepage": "https://nat.moe/",
