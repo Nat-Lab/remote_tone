@@ -11,16 +11,20 @@ level: <input type=text id=level></input><br>
 interval: <input type=text id=interval></input><br>
 duration: <input type=text id=duration></input><br>
 <button onclick='doit();'>Add</button>
+<hr>
+task: <input type=text id=task></input> <button onclick="toneControl.destroy(parseInt(document.getElementById('task').value));">Remove</button>
+<hr>
+<h3>Tasks: </h3>
 <script>
 function doit() {
 	var freq = parseInt(document.getElementById('freq').value),
 	    lvl  = parseInt(document.getElementById('level').value),
 	    intv = parseInt(document.getElementById('interval').value),
-	    dur  = parseInt(document.getElementById('duration').value);
-
-	//if(!typeof task === 'undefined') toneControl.destroy(task);
-	//task = 
-	toneControl.create(freq, lvl, intv, dur);
+	    dur  = parseInt(document.getElementById('duration').value),
+	    task = toneControl.create(freq, lvl, intv, dur),
+	    p = document.createElement('p');
+	p.innerHTML = "task " + task + ", f: " + freq + ", l: " + lvl + ", i: " + intv + ", d: " + dur;
+	document.body.appendChild(p);
 }
 </script>
 </html>
