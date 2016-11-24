@@ -1,12 +1,14 @@
+var tones = [];
 var toneControl = (function () {
 
-	destroy = function (scheduler) {
-		window.clearInterval(scheduler);
+	destroy = function (tid) {
+		window.clearInterval(tid);
+		tones[tid].stop();
 	};
 
 	create = function(freq, lvl, intv, dur) {
 		var fire_intv = intv + dur;
-		new Tone.Oscillator({
+		var tone = new Tone.Oscillator({
 			"type": "square",
 			"frequency" : freq,
 			"volume" : lvl
@@ -14,7 +16,7 @@ var toneControl = (function () {
 		window.setTimeout(function() {
 			Tone.Master.mute = true;
 		}, dur);
-		return window.setInterval(function() {
+		var tid = window.setInterval(function() {
 			window.setTimeout(function() {
 				Tone.Master.mute = true;
 			}, fire_intv);
@@ -22,6 +24,8 @@ var toneControl = (function () {
 				Tone.Master.mute = false;
 			}, intv);
 		}, fire_intv);
+		tones[tid] = tone;
+		return tid;
 	};
 
 	return {
