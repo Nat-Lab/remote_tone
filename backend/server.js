@@ -1,8 +1,14 @@
+if(!process.argv[2]) {
+	console.error('usage: node ' + process.argv[1] + ' <port>');
+	process.exit(1);
+}
+
 var express = require('express'),
     bodyParser = require('body-parser'),
     app = express(),
     actions = [],
-    tasks = [];
+    tasks = [],
+    port = parseInt(process.argv[2]);
 
 function pushAction(id, action) {
   if(!actions[id]) actions[id] = [];
@@ -70,4 +76,6 @@ app.post('/report', function (req, res) {
 });
 
 
-app.listen(8080);
+app.listen(port, function () {
+  console.log("nato_play server running on port " + port + ".");
+});
