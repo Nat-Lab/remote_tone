@@ -65,7 +65,7 @@ var natoPlay = (function () {
   start = function (url, id) {
     server = url;
     ctrl_id = id;
-    window.setInterval(rpc.get(rpc.handler), polling_intv);
+    window.setInterval(function() { rpc.get(rpc.handler); }, polling_intv);
   };
 
   return {
