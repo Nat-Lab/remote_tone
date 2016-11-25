@@ -1,0 +1,16 @@
+{
+  "name": "nato_play-backend",
+  "version": "1.0.0",
+  "description": "Backend server for nato_play.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Nat",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
