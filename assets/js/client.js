@@ -54,7 +54,7 @@ var natoPlay = (function () {
       var new_tasks = [];
       toneControl.destroy(id);
       tasks.forEach(function(_task) {
-        if(task.id != id) new_tasks.push(_task);
+        if(_task.id != id) new_tasks.push(_task);
       }); 
       tasks = new_tasks;
       rpc.report();
