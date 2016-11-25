@@ -5,7 +5,9 @@
  nato_play 控制端。命令行指令：
 
    natoPlay.start('http://127.0.0.1:8080', 100); // 連接到位於 127.0.0.1:8080 的服務器，使用 100 作為 ID。
-   tasks; // 列出當前任務。
+   natoPlay.task.add(60, 0, 300, 60); // 增加一個任務：60Hz, 0db，300ms 間隔，60ms 長度。
+   natoPlay.rpc.get(console.log); // 列出被控端任務。
+   natoPlay.task.remove(2); // 移除被控端 id 為 2 的任務。
 
 -->
 
@@ -13,7 +15,7 @@
 <head>
 <script src="bower_components/tone/build/Tone.js"></script>
 <script src="assets/js/control.js"></script>
-<script src="assets/js/client.js"></script>
+<script src="assets/js/server.js"></script>
 <script src="assets/js/UI.js"></script>
 </head>
 </html>
