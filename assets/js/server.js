@@ -9,7 +9,7 @@ var natoPlay = (function () {
 
     send : function (task) {
       var http = new XMLHttpRequest(),
-          url = server + "?id=" + ctrl_id + "&action=control";
+          url = server + "/control?id=" + ctrl_id;
       http.open("POST", url);
       http.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
       http.send(JSON.stringify(task));
@@ -17,7 +17,7 @@ var natoPlay = (function () {
 
     get : function (callback) {
       var http = new XMLHttpRequest(),
-          url = server + "?id=" + ctrl_id + "&action=get_report";
+          url = server + "/get_report?id=" + ctrl_id;
       http.open("GET", url);
       http.send();
       http.onreadystatechange = function() {

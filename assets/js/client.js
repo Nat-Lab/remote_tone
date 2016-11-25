@@ -1,5 +1,4 @@
 var tasks = [];
-var offset = 0;
 var polling_intv = 500;
 var server, ctrl_id;
 
@@ -9,7 +8,7 @@ var natoPlay = (function () {
 
     report : function () {
       var http = new XMLHttpRequest(),
-          url = server + "?id=" + ctrl_id + "&action=report";
+          url = server + "/report?id=" + ctrl_id;
       http.open("POST", url);
       http.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
       http.send(JSON.stringify(tasks));
@@ -17,7 +16,7 @@ var natoPlay = (function () {
 
     get : function (callback) {
       var http = new XMLHttpRequest(),
-          url = server + "?id=" + ctrl_id + "&action=get&offset=" + offset;
+          url = server + "/get?id=" + ctrl_id;
       http.open("GET", url);
       http.send();
       http.onreadystatechange = function() {
@@ -28,7 +27,6 @@ var natoPlay = (function () {
     },
 
     handler : function (jsonObj) {
-      offset = jsonObj.offset;
       if(jsonObj.action == "add") {
         task.add(jsonObj.task);
       }
