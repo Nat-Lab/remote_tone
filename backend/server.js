@@ -12,7 +12,7 @@ var express = require('express'),
 
 function pushAction(id, action) {
   if(!actions[id]) actions[id] = [];
-  actions[id].push(action);
+  if(actions[id].length <= 20) actions[id].push(action);
 }
 
 function getAction(id) {
