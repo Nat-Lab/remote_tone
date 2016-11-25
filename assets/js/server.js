@@ -1,6 +1,6 @@
 var tasks = [];
 var offset = 0;
-var polling_intv = 500;
+var polling_intv = 1000;
 var server, ctrl_id;
 
 var natoPlay = (function () {

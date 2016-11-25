@@ -1,5 +1,5 @@
 var tasks = [];
-var polling_intv = 500;
+var polling_intv = 1000;
 var server, ctrl_id;
 
 var natoPlay = (function () {
@@ -46,7 +46,6 @@ var natoPlay = (function () {
         task_object.duration
       );
       tasks.push({id: id, task: task_object});
-      UI.update(tasks);
       rpc.report();
     },
 
@@ -58,7 +57,6 @@ var natoPlay = (function () {
       }); 
       tasks = new_tasks;
       rpc.report();
-      UI.update(tasks);
     }
   };
 

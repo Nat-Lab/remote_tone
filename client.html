@@ -14,12 +14,12 @@
 <script src="bower_components/tone/build/Tone.js"></script>
 <script src="assets/js/control.js"></script>
 <script src="assets/js/client.js"></script>
-<script src="assets/js/UI.js"></script>
 </head>
 <body>
-<label>server: <input type=text id=server></input></label><br>
+<label>server: <input type=text id=server placeholder="http://..."></input></label><br>
 <label>id: <input type=text id=id></input></label><br>
 <button id=conn onclick="connect();">Connect</button>
+</body>
 <script>
 function connect() {
   natoPlay.start(document.getElementById('server').value, document.getElementById('id').value);

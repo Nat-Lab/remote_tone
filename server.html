@@ -17,5 +17,34 @@
 <script src="assets/js/control.js"></script>
 <script src="assets/js/server.js"></script>
 <script src="assets/js/UI.js"></script>
+<body>
+<label>server: <input type=text id=server placeholder="http://..."></input></label><br>
+<label>id: <input type=text id=id></input></label><br>
+<button id=conn onclick="connect();">Connect</button>
+<hr>
+<label>freq: <input type=text id=freq></input></label><br>
+<label>level: <input type=text id=level></input></label><br>
+<label>interval: <input type=text id=interval></input></label><br>
+<label>duration: <input type=text id=duration></input></label><br>
+<button onclick='taskadd();'>Add Task</button>
+<hr>
+task: <input type=text id=task></input> <button onclick="natoPlay.task.remove(parseInt(document.getElementById('task').value));">Remove</button>
+<hr>
+<script>
+function taskadd() {
+  var freq = parseInt(document.getElementById('freq').value),
+      lvl  = parseInt(document.getElementById('level').value),
+      intv = parseInt(document.getElementById('interval').value),
+      dur  = parseInt(document.getElementById('duration').value);
+  natoPlay.task.add(freq, lvl, intv, dur);
+}
+function connect() {
+  natoPlay.start(document.getElementById('server').value, document.getElementById('id').value);
+  document.getElementById('conn').disabled = true;
+}
+</script>
+<h3>Tasks: </h3>
+<div id=tasklist></div>
+</body>
 </head>
 </html>
