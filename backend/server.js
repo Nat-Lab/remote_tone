@@ -21,8 +21,8 @@ function getAction(id) {
 }
 
 function getClientTasks(id) {
-  if(!actions[id]) return [];
-  else return actions[id];
+  if(!tasks[id]) return [];
+  else return tasks[id];
 }
 
 app.use(bodyParser.json());
