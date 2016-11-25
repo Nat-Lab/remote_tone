@@ -48,6 +48,28 @@ var natoPlay = (function () {
         id: id
       });
     }
+  },
+
+  preview = {
+
+    play : function(tasks_lst) {
+      preview.stop();
+      tasks_lst.forEach(function(task_element) {
+        tasks.push(toneControl.create(
+          task_element.task.freq,
+          task_element.task.level,
+          task_element.task.interval,
+          task_element.task.duration
+        ));
+      });
+    },
+
+    stop : function() {
+      while(tasks.length > 0) {
+        toneControl.destroy(tasks.pop());
+      }
+    }
+
   };
 
   start = function (url, id) {
@@ -60,8 +82,9 @@ var natoPlay = (function () {
 
   return {
     task: task,
-    rpc : rpc,
-    start : start
+    rpc: rpc,
+    preview: preview,
+    start: start
   };
 
 })();

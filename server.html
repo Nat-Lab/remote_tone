@@ -13,7 +13,7 @@
 
 <html>
 <head>
-<!--<script src="bower_components/tone/build/Tone.js"></script>-->
+<script src="bower_components/tone/build/Tone.js"></script>
 <script src="assets/js/control.js"></script>
 <script src="assets/js/server.js"></script>
 <script src="assets/js/UI.js"></script>
@@ -28,7 +28,9 @@
 <label>duration: <input type=text id=duration></input></label><br>
 <button onclick='taskadd();'>Add Task</button>
 <hr>
-task: <input type=text id=task></input> <button onclick="natoPlay.task.remove(parseInt(document.getElementById('task').value));">Remove</button>
+Preview control: <button onclick="natoPlay.rpc.get(natoPlay.preview.play);">Start/Update</button> <button onclick="natoPlay.preview.stop();">Stop</button>
+<hr>
+<label>task: <input type=text id=task></input></label> <button onclick="natoPlay.task.remove(parseInt(document.getElementById('task').value));">Remove</button>
 <hr>
 <script>
 function taskadd() {
