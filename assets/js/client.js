@@ -8,14 +8,27 @@ var natoPlay = (function () {
   var rpc = {
 
     report : function () {
-      /* TODO: POST task_element array to server */
+      var http = new XMLHttpRequest(),
+          url = server + "?id=" + ctrl_id + "&action=report";
+      http.open("POST", url);
+      http.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      http.send(JSON.stringify(tasks));
     },
 
-    get : function () {
-      /* TODO: GET task from server, return the control json. */
+    get : function (callback) {
+      var http = new XMLHttpRequest(),
+          url = server + "?id=" + ctrl_id + "&action=get&offset=" + offset;
+      http.open("GET", url);
+      http.send();
+      http.onreadystatechange = function() {
+        if(http.readyState == 4 && http.status == 200) {
+          callback(JSON.parse(http.responseText));
+        }
+      };
     },
 
     handler : function (jsonObj) {
+      offset = jsonObj.offset;
       if(jsonObj.action == "add") {
         task.add(jsonObj.task);
       }
@@ -54,7 +67,7 @@ var natoPlay = (function () {
   start = function (url, id) {
     server = url;
     ctrl_id = id;
-    window.setInterval(rpc.handler(rpc.get()), polling_intv);
+    window.setInterval(rpc.get(rpc.handler), polling_intv);
   };
 
   return {
