@@ -1,0 +1,37 @@
+* {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+button,
+input {
+  padding: 10px;
+  margin: 2px;
+}
+
+input {
+  width: 90%;
+  height: 20px;
+  font-size: 14px;
+}
+
+body {
+  max-width: 600px;
+}
+
+div {
+  padding: 5px;
+  margin: 5px;
+  border: solid 2px #999;
+  box-shadow: 10px 5px 0px #ccc;
+  background-color: #f3f3f3;
+}
+
+#tasklist {
+  box-shadow: none;
+  background-color: #fff;
+}
+
+#tasklist p {
+  margin: 1px;
+}

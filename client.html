@@ -14,11 +14,16 @@
 <script src="bower_components/tone/build/Tone.js"></script>
 <script src="assets/js/control.js"></script>
 <script src="assets/js/client.js"></script>
+<link rel="stylesheet" media="all" href="assets/css/style.css">
+<meta name="viewport" content="initial-scale=1.0001, minimum-scale=1.0001, maximum-scale=1.0001, user-scalable=no"/>
 </head>
 <body>
+<div class="server_config">
+<b>Server: </b><br>
 <label>server: <input type=text id=server placeholder="http://..."></input></label><br>
-<label>id: <input type=text id=id></input></label><br>
+<label>control id: <input type=text id=id></input></label><br>
 <button id=conn onclick="connect();">Connect</button>
+</div>
 </body>
 <script>
 function connect() {

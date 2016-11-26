@@ -17,21 +17,27 @@
 <script src="assets/js/control.js"></script>
 <script src="assets/js/server.js"></script>
 <script src="assets/js/UI.js"></script>
+<link rel="stylesheet" media="all" href="assets/css/style.css">
+<meta name="viewport" content="initial-scale=1.0001, minimum-scale=1.0001, maximum-scale=1.0001, user-scalable=no"/>
 <body>
+<div class="server_config">
+<b>Server: </b><br>
 <label>server: <input type=text id=server placeholder="http://..."></input></label><br>
-<label>id: <input type=text id=id></input></label><br>
+<label>control id: <input type=text id=id></input></label><br>
 <button id=conn onclick="connect();">Connect</button>
-<hr>
-<label>freq: <input type=text id=freq></input></label><br>
-<label>level: <input type=text id=level></input></label><br>
-<label>interval: <input type=text id=interval></input></label><br>
-<label>duration: <input type=text id=duration></input></label><br>
+</div>
+<div class="task_panel">
+<b>Control: </b><br>
+<label>freq(hz): <input type=text id=freq></input></label><br>
+<label>level(db): <input type=text id=level></input></label><br>
+<label>interval(ms): <input type=text id=interval></input></label><br>
+<label>duration(ms): <input type=text id=duration></input></label><br>
 <button onclick='taskadd();'>Add Task</button>
-<hr>
+</div>
+<div class="preview_panel">
 Preview control: <button onclick="natoPlay.rpc.get(natoPlay.preview.play);">Start/Update</button> <button onclick="natoPlay.preview.stop();">Stop</button>
-<hr>
-<label>task: <input type=text id=task></input></label> <button onclick="natoPlay.task.remove(parseInt(document.getElementById('task').value));">Remove</button>
-<hr>
+</div>
+<!--<label>task: <input type=text id=task></input></label> <button onclick="natoPlay.task.remove(parseInt(document.getElementById('task').value));">Remove</button>-->
 <script>
 function taskadd() {
   var freq = parseInt(document.getElementById('freq').value),
@@ -45,8 +51,10 @@ function connect() {
   document.getElementById('conn').disabled = true;
 }
 </script>
-<h3>Tasks: </h3>
+<div class="tasks_list">
+<b>Tasks: </b>
 <div id=tasklist></div>
+</div>
 </body>
 </head>
 </html>
