@@ -27,11 +27,11 @@ div {
   background-color: #f3f3f3;
 }
 
-#tasklist {
+#tasklist, #tasklist_pending {
   box-shadow: none;
   background-color: #fff;
 }
 
-#tasklist p {
+p {
   margin: 1px;
 }

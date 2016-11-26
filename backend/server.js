@@ -22,8 +22,9 @@ function getAction(id) {
 }
 
 function getClientTasks(id) {
-  if(!tasks[id]) return {last_active: 0, tasks_list: []};
-  else return {last_active: heartbeat[id], tasks_list: tasks[id]};
+  var pending = actions[id] ? actions[id] : [];
+  if(!tasks[id]) return {last_active: 0, tasks_list: [], pending_tasks: pending};
+  else return {last_active: heartbeat[id], tasks_list: tasks[id], pending_tasks: pending};
 }
 
 app.use(bodyParser.json());
