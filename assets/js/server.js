@@ -22,7 +22,7 @@ var natoPlay = (function () {
       http.send();
       http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
-          callback(JSON.parse(http.responseText));
+          callback(JSON.parse(http.responseText).tasks_list, JSON.parse(http.responseText).last_active);
         }
       };
     }

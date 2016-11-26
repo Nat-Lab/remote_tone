@@ -8,6 +8,7 @@ var express = require('express'),
     app = express(),
     actions = [],
     tasks = [],
+    heartbeat = [],
     port = parseInt(process.argv[2]);
 
 function pushAction(id, action) {
@@ -21,8 +22,8 @@ function getAction(id) {
 }
 
 function getClientTasks(id) {
-  if(!tasks[id]) return [];
-  else return tasks[id];
+  if(!tasks[id]) return {last_active: 0, tasks_list: []};
+  else return {last_active: heartbeat[id], tasks_list: tasks[id]};
 }
 
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.get('/get', function (req, res) {
   if (typeof id !== 'undefined' && id) {
     res.type('application/json');
     var tsk = JSON.stringify(getAction(id));
+    heartbeat[id] = (Date.now() / 1000 | 0);
     console.log("send " + id + " task: " + tsk);
     res.send(tsk);
   } else res.status(500).end();
