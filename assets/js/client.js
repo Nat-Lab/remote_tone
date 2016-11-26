@@ -39,6 +39,17 @@ var natoPlay = (function () {
 
   task = {
     add : function(task_object) {
+      var new_tasks = tasks.slice();;
+      task.clear();
+      new_tasks.forEach(function(task_element) {
+        var id = toneControl.create(
+          task_element.task.freq,
+          task_element.task.level,
+          task_element.task.interval,
+          task_element.task.duration
+        );
+        tasks.push({id: id, task: task_element.task});
+      });
       var id = toneControl.create(
         task_object.freq, 
         task_object.level, 
@@ -47,6 +58,13 @@ var natoPlay = (function () {
       );
       tasks.push({id: id, task: task_object});
       rpc.report();
+    },
+
+    clear : function() {
+      while(tasks.length > 0) {
+        var tsk = tasks.pop();
+        toneControl.destroy(tsk.id);
+      }
     },
 
     remove : function(id) {

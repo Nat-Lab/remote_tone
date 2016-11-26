@@ -1,9 +1,7 @@
-var tones = [];
 var toneControl = (function () {
 
   destroy = function (tid) {
     window.clearInterval(tid);
-    tones[tid].stop();
   };
 
   create = function(freq, lvl, intv, dur) {
@@ -24,7 +22,6 @@ var toneControl = (function () {
         tone.start();
       }, intv);
     }, fire_intv);
-    tones[tid] = tone;
     return tid;
   };
 
